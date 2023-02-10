@@ -34,7 +34,7 @@ shellcmd xsh_prodcons(int nargs, char *args[]) {
 	}
 	
 	can_produce = semcreate(1);
-	can_consume = semcreate(1);
+	can_consume = semcreate(0);
 
 	resume(create(producer, 1024, 20, "producer", nargs, count));
 	resume(create(consumer, 1024, 20, "consumer", nargs, count));
