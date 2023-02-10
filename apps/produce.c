@@ -11,5 +11,5 @@ void producer(int count) {
 		i += 1;
 		signal(can_consume);
 	}
-	signal(can_consume);
+	signal(prod_status);
 }

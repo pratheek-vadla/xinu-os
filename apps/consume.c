@@ -10,4 +10,5 @@ void consumer(int count) {
 		i += 1;
 		signal(can_produce);
 	}
+	signal(cons_status);
 }
