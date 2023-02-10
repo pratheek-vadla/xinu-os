@@ -11,7 +11,6 @@ int n;
 sid32 can_produce;
 sid32 can_consume;
 
-
 shellcmd xsh_prodcons(int nargs, char *args[]) {
 
 	int count = 2000;
@@ -33,6 +32,8 @@ shellcmd xsh_prodcons(int nargs, char *args[]) {
 		}
 	}
 	
+	// printf("can_produce:%d",semcount(can_produce));
+	// printf("can_consume:%d",semcount(can_consume));
 	can_produce = semcreate(1);
 	can_consume = semcreate(0);
 
