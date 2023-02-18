@@ -87,3 +87,6 @@ extern shellcmd xsh_prodcons       (int32, char *[]);
 
 /* in file xsh_run.c */
 extern shellcmd xsh_run       (int32, char *[]);
+
+/* in file xsh_prodcons_bb */
+extern shellcmd xsh_prodcons_bb       (int32, char *[]);

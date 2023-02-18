@@ -19,7 +19,7 @@ shellcmd xsh_prodcons(int nargs, char *args[]) {
 	
 	/* Check argument count */
 	if (nargs > 2) {
-		// fprintf(stderr, "%s: too many arguments\n", args[0]);
+		fprintf(stderr, "%s: too many arguments\n", args[0]);
 		fprintf(stderr, "Syntax: run prodcons [counter]\n");
 		signal(run_status);
 		return 1;
