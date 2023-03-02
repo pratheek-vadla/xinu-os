@@ -90,3 +90,6 @@ extern shellcmd xsh_run       (int32, char *[]);
 
 /* in file xsh_prodcons_bb */
 extern shellcmd xsh_prodcons_bb       (int32, char *[]);
+
+/* in file xsh_futest */
+extern shellcmd xsh_futest       (int32, char *[]);
