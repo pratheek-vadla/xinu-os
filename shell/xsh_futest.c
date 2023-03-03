@@ -3,11 +3,9 @@
 #include <stdlib.h>
 
 extern sid32 print_sem;
-extern sid32 fut_wait_sem;
 
 syscall xsh_futest(int nargs, char *args[]) {
   print_sem = semcreate(1);
-  fut_wait_sem = semcreate(0);
   future_t* f_exclusive;
   f_exclusive = future_alloc(FUTURE_EXCLUSIVE, sizeof(int), 1);
 
