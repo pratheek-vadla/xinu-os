@@ -4,6 +4,7 @@
 #include <shprototypes.h>
 #include <prodcons.h>
 #include <future.h>
+#include <heap.h>
 
 /*------------------------------------------------------------------------
  * xsh_run
@@ -12,6 +13,7 @@
 
 sid32 run_status;
 sid32 futest_run_status;
+sid32 sync_malloc;
 
 shellcmd xsh_run(int nargs, char *args[]) {
 
@@ -20,6 +22,7 @@ shellcmd xsh_run(int nargs, char *args[]) {
 		printf("futest\n");
 		printf("hello\n");
 		printf("list\n");
+		printf("memtest\n");
   		printf("prodcons\n");
   		printf("prodcons_bb\n");
   		return 0;
@@ -46,7 +49,13 @@ shellcmd xsh_run(int nargs, char *args[]) {
                 wait(futest_run_status);
                 // printf("Received Signal from futest. Exiting Run.\n");
 		return 0;
-	}
+	}else if(strcmp(args[1], "memtest") == 0) {
+                /* create a process with the function as an entry point. */
+                sync_malloc = semcreate(0);
+                resume (create(xsh_memtest, 1024, 20, "memtest", 2, nargs - 1, &(args[1])));
+                wait(sync_malloc);
+                return 0;
+        }
 	else{
 		fprintf(stderr, "%s: invalid argument, unknown process.\n", args[0]);
 		return 0;
