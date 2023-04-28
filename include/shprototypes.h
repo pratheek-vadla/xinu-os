@@ -97,3 +97,5 @@ extern shellcmd xsh_futest       (int32, char *[]);
 /* in file xsh_memtest */
 extern shellcmd xsh_memtest       (int32, char *[]);
 
+/* in file xsh_memtest */
+extern shellcmd xsh_fstest       (int32, char *[]);

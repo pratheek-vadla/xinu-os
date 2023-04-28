@@ -5,6 +5,7 @@
 #include <prodcons.h>
 #include <future.h>
 #include <heap.h>
+#include <fs.h>
 
 /*------------------------------------------------------------------------
  * xsh_run
@@ -20,6 +21,7 @@ shellcmd xsh_run(int nargs, char *args[]) {
 	// Print list of available functions
 	if ((nargs == 1) || (strcmp(args[1], "list") == 0)) {	
 		printf("futest\n");
+		printf("fstest\n");
 		printf("hello\n");
 		printf("list\n");
 		printf("memtest\n");
@@ -54,6 +56,12 @@ shellcmd xsh_run(int nargs, char *args[]) {
                 sync_malloc = semcreate(0);
                 resume (create(xsh_memtest, 1024, 20, "memtest", 2, nargs - 1, &(args[1])));
                 wait(sync_malloc);
+                return 0;
+        }else if(strcmp(args[1], "fstest") == 0) {
+                /* create a process with the function as an entry point. */
+                //sync_malloc = semcreate(0);
+                resume (create(xsh_memtest, 1024, 20, "memtest", 2, nargs - 1, &(args[1])));
+                //wait(sync_malloc);
                 return 0;
         }
 	else{
